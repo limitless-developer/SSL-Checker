@@ -49,12 +49,12 @@ require("dotenv").config();
 })()
 
 async function check(host){
-    const timeout = parseInt(process.env.TIMEOUT || '5')
+    const time_out = parseInt(process.env.TIMEOUT || '5')
 
     return new Promise(async resolve => {
         const timeout = setTimeout(() => {
                             resolve(false)
-                        }, timeout * 1000);
+                        }, time_out * 1000);
 
         const result = await sslChecker(host);
         if(result) clearTimeout(timeout)
