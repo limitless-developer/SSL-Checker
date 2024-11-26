@@ -51,7 +51,7 @@ require("dotenv").config();
 async function check(host){
     const time_out = parseInt(process.env.TIMEOUT || '5')
 
-    return new Promise(async resolve => {
+    return await new Promise(async resolve => {
         const timeout = setTimeout(() => {
                             resolve(false)
                         }, time_out * 1000);
