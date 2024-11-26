@@ -25,10 +25,7 @@ require("dotenv").config();
         const host = item.host
         const remain = item.result?.daysRemaining || 0
         const isValid = item.result?.valid || false
-        const isUp = item.result || false
-
-        console.log('isUp', isUp);
-        
+        const isUp = item.result || false 
 
         if( remain<=remains){
             messages += `Host       : ${host}\n`
