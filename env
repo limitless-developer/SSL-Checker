@@ -11,5 +11,5 @@ DAYS_REMAIN     = 7
 HOSTS           = "google.com, yahoo.com"
 BOT_TOKEN       = 
 CHAT_ID         = 
-
+TIMEOUT         = 5
 #================================================#
