@@ -25,11 +25,19 @@ require("dotenv").config();
         const host = item.host
         const remain = item.result?.daysRemaining || 0
         const isValid = item.result?.valid || false
+        const isUp = item.result || false
+
+        console.log('isUp', isUp);
+        
 
         if( remain<=remains){
             messages += `Host       : ${host}\n`
+            if(isUp){
             messages += `Is Valid   : ${isValid}\n`
             messages += `Remains    : <b>${remain}d</b>\n`
+            }else{
+            messages += `\n🔥 <b>Timeout or Down</b> 🔥\n`
+            }
             messages += `-------------------------------------------\n`
         }
     });
@@ -38,11 +46,21 @@ require("dotenv").config();
         messages = `SSL Alert!\n\n${messages}`
         await sendNotif(messages)
     }
+
+    process.exit(1)
     
 })()
 
 async function check(host){
-    return await sslChecker(host);
+    return new Promise(async resolve => {
+        const timeout = setTimeout(() => {
+                            resolve(false)
+                        }, 5000); // wait 5s
+
+        const result = await sslChecker(host);
+        if(result) clearTimeout(timeout)
+        resolve(result)
+    })
 }
 
 async function sendNotif (msg){
