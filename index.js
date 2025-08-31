@@ -28,12 +28,14 @@ require("dotenv").config();
 
         if( remain<=remains){
             messages += `Host       : ${host}\n`
+
             if(isUp){
-            messages += `Is Valid   : ${isValid}\n`
-            messages += `Remains    : <b>${remain}d</b>\n`
+                messages += `Is Valid   : ${isValid}\n`
+                messages += `Remains    : <b>${remain}d</b>\n`
             }else{
-            messages += `\n🔥 <b>Timeout or Down</b> 🔥\n`
+                messages += `\n🔥 <b>Timeout or Down</b> 🔥\n`
             }
+            
             messages += `-------------------------------------------\n`
         }
     });
