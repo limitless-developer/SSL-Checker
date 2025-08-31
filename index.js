@@ -38,10 +38,11 @@ require("dotenv").config();
             messages += `-------------------------------------------\n`
         }
     });
-
+    
     if(messages.length > 0){
         messages = `SSL Alert!\n\n${messages}`
-        await sendNotif(messages)
+        const sent = await sendNotif(messages);
+        
     }
 
     process.exit(1)
