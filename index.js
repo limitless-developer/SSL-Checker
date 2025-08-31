@@ -55,8 +55,14 @@ async function check(host){
         const timeout = setTimeout(() => {
                             resolve(false)
                         }, time_out * 1000);
+        let result    = null;
 
-        const result = await sslChecker(host);
+        try {
+            result = await sslChecker(host);   
+        } catch (error) {
+            result = false
+        }
+
         if(result) clearTimeout(timeout)
         resolve(result)
     })
