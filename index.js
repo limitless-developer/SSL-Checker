@@ -5,7 +5,7 @@ require("dotenv").config();
 (async()=>{
     let messages    = ""
     const remains   = process.env.DAYS_REMAIN || 7
-    const domains   = process.env.HOSTS || "ionyx-crmd.uniteus.id"
+    const domains   = process.env.HOSTS || "google.com"
 
     const hosts     = domains.split(',')
     const checks    = await Promise.all(
@@ -19,7 +19,6 @@ require("dotenv").config();
                             })
                         })
                     );
-    console.log(checks);
     
     checks.forEach(item => {
         const host = item.host
